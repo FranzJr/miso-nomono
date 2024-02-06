@@ -1,4 +1,4 @@
-# Entrega 1 - Aplicaciones no Monoliticas
+# Entrega 1 - Grupo Papiro - Aplicaciones no Monoliticas
 
 ## Integrantes
 | Nombre           | Correo                        |
