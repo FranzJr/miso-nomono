@@ -1,0 +1,37 @@
+ContextMap PropiedadesDeLosAlpes_TOBE {
+  contains GestionDeInformacion
+  contains InvestigacionDeMercado
+  contains GestionDeTransacciones
+  contains AtencionAlCliente
+  contains AnalisisDeDatos
+
+  GestionDeInformacion [PL]<->[D] InvestigacionDeMercado
+  GestionDeInformacion [PL]<->[D] GestionDeTransacciones
+  GestionDeTransacciones [PL]<->[D] AtencionAlCliente
+  GestionDeInformacion [C]<->[C] AnalisisDeDatos
+}
+
+BoundedContext GestionDeInformacion {
+  type = APPLICATION
+  domainVisionStatement = "Centralizar y optimizar la gestión de información de bienes raíces integrando análisis avanzados y datos en tiempo real."
+}
+
+BoundedContext InvestigacionDeMercado {
+  type = CORE
+  domainVisionStatement = "Potenciar la recopilación y análisis de datos de mercado para proveer insights valiosos y tendencias."
+}
+
+BoundedContext GestionDeTransacciones {
+  type = CORE
+  domainVisionStatement = "Innovar en la gestión de transacciones inmobiliarias con procesos más eficientes y seguros."
+}
+
+BoundedContext AtencionAlCliente {
+  type = SUPPORTING
+  domainVisionStatement = "Elevar la experiencia de servicio al cliente mediante tecnología y personalización."
+}
+
+BoundedContext AnalisisDeDatos {
+  type = SYSTEM
+  domainVisionStatement = "Aplicar técnicas de análisis de datos y machine learning para enriquecer la toma de decisiones y el valor ofrecido a los usuarios."
+}

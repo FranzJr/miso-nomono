@@ -1,0 +1,30 @@
+ContextMap PropiedadesDeLosAlpes_ASIS {
+  contains GestionDeInformacion
+  contains InvestigacionYRecoleccion
+  contains TransaccionesInmobiliarias
+  contains ServicioAlCliente
+
+  GestionDeInformacion [PL]<->[U] InvestigacionYRecoleccion
+  GestionDeInformacion [PL]<->[U] TransaccionesInmobiliarias
+  TransaccionesInmobiliarias [PL]<->[U] ServicioAlCliente
+}
+
+BoundedContext GestionDeInformacion {
+  type = APPLICATION
+  domainVisionStatement = "Centralizar y gestionar la información de bienes raíces para facilitar el acceso y la toma de decisiones."
+}
+
+BoundedContext InvestigacionYRecoleccion {
+  type = SUPPORTING
+  domainVisionStatement = "Realizar la investigación y recolección de datos de propiedades para enriquecer la base de datos central."
+}
+
+BoundedContext TransaccionesInmobiliarias {
+  type = SUPPORTING
+  domainVisionStatement = "Gestionar las transacciones de compra, venta y arrendamiento de propiedades."
+}
+
+BoundedContext ServicioAlCliente {
+  type = SUPPORTING
+  domainVisionStatement = "Brindar asistencia y soporte a los clientes y usuarios de la plataforma."
+}

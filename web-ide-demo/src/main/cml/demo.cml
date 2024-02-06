@@ -1,0 +1,200 @@
+Domain PropiedadesDeLosAlpes {
+  domainVisionStatement = "Ser la plataforma líder en información y análisis de bienes raíces comerciales en Colombia, ofreciendo datos confiables y herramientas avanzadas para facilitar la toma de decisiones informadas en el mercado inmobiliario."
+
+  Subdomain GestionDeInformacionDeBienesRaices {
+    type = CORE_DOMAIN
+    domainVisionStatement = "Subdominio núcleo para la gestión de la información de bienes raíces, proporcionando una vista centralizada y detallada del mercado inmobiliario."
+
+    Entity Propiedad {
+      String identificador
+      Direccion direccion
+      String tipo // Ej: Comercial, Residencial, Industrial
+      Int numeroDePisos
+      Float metrosCuadrados
+      Boolean esComercial
+      String zonificacion
+      Int capacidadDeEstacionamiento
+      Date fechaDeConstruccion
+      String estadoDeConservacion // Ej: Excelente, Bueno, Necesita reparaciones
+      Amenidades amenidades
+      Float valorComercialEstimado
+      Documentacion documentacion
+      Historial historial
+      relation Propietario propietario
+      relation List<Transaccion> transacciones
+    }
+
+    Entity Propietario {
+      String identificador
+      String nombreCompleto
+      String tipoIdentificacion // Ej: Cédula, NIT, Pasaporte
+      String numeroIdentificacion
+      Contacto contacto
+      String rol // Ej: Propietario, Administrador
+      relation List<Propiedad> propiedades
+    }
+
+    Entity Inmueble {
+      String identificador
+      Propiedad propiedad
+      Propietario propietarioActual
+      String registroInmobiliario
+      Boolean hipoteca
+      String estadoHipoteca // Ej: Vigente, Pagada, En mora
+      Float valorHipoteca
+      Banco bancoHipotecario
+    }
+
+    Entity Direccion {
+      String calle
+      String numero
+      String ciudad
+      String estado
+      String pais
+      String codigoPostal
+    }
+
+    Entity Contacto {
+      String telefono
+      String correo
+      String direccionPostal
+    }
+
+    Entity Amenidades {
+      Boolean piscina
+      Boolean gimnasio
+      Boolean seguridadPrivada
+      Boolean areaInfantil
+      Boolean salonComunal
+      Boolean zonaBBQ
+      Boolean terraza
+      Boolean areaVerde
+      Boolean parqueaderoVisitantes
+      Boolean accesoDiscapacitados
+      Boolean circuitoCerradoTV
+      Boolean porteria24Horas
+    }
+
+    Entity Documentacion {
+      String tituloDePropiedad
+      String certificadoDeTradicionYLibertad
+      Boolean impuestosAlDia
+      String usoDeSuelo
+      String licenciaDeConstruccion
+      String permisoDeOcupacion
+      Boolean certificadoDeBomberos
+      Boolean evaluacionEstructural
+      Boolean seguroDePropiedad
+      String reglamentoDePropiedadHorizontal
+    }
+
+    Entity Historial {
+      Date fechaDeCompra
+      Date fechaDeVenta
+      List<String> transaccionesAnteriores  
+    }
+
+    Entity Banco {
+      String nombre
+      String numeroSucursal
+      String direccionSucursal
+      Contacto contacto 
+    }
+
+    Entity Transaccion {
+      String identificador
+      Date fecha
+      String tipo // Ej: Compra, Venta, Arrendamiento
+      Float monto
+      String moneda
+      Propietario vendedor
+      Propietario comprador
+    }
+    
+
+
+
+  }
+
+  Subdomain InvestigacionDePropiedades {
+    type = SUPPORTING_DOMAIN
+    domainVisionStatement = "Subdominio de soporte que se encarga de la investigación detallada y recolección de datos de propiedades para alimentar el sistema con información actualizada y precisa."
+  /* Define Entities and Value Objects here */
+  }
+
+  Subdomain GestionDeListados {
+    type = SUPPORTING_DOMAIN
+    domainVisionStatement = "Subdominio de soporte para la gestión y actualización de listados de propiedades, asegurando que la información esté siempre actualizada y sea relevante para los usuarios."
+  /* Define Entities and Value Objects here */
+  }
+
+  Subdomain TransaccionesDePropiedades {
+    type = SUPPORTING_DOMAIN
+    domainVisionStatement = "Subdominio de soporte dedicado a la gestión de transacciones de propiedades, ofreciendo comparativos y análisis de ventas y arrendamientos."
+  /* Define Entities and Value Objects here */
+  }
+
+  Subdomain InformacionSobreInquilinos {
+    type = GENERIC_SUBDOMAIN
+    domainVisionStatement = "Subdominio genérico que proporciona información consolidada sobre inquilinos y empresas, sirviendo como referencia para evaluaciones de riesgo y oportunidades de negocio."
+  /* Define Entities and Value Objects here */
+  }
+
+  Subdomain IntegracionYProcesamientoDeDatos {
+    type = GENERIC_SUBDOMAIN
+    domainVisionStatement = "Subdominio genérico encargado de la integración y procesamiento de datos, asegurando la calidad y coherencia de la información que se presenta a los usuarios."
+  /* Define Entities and Value Objects here */
+  }
+
+}
+
+//Las historias de ususario las dejamos en ingles por los conectores en español no compilan
+UserStory US1_QueryAmenities {
+  As a "Potential Customer"
+    I want to "consultar" "Amenidades" for a "Propiedad"
+  so that "puedo determinar si cumple con mis necesidades de comodidad y estilo de vida."
+}
+
+UserStory US2_ReviewDocumentation {
+  As a "Real Estate Agent"
+    I want to "revisar" "Documentación" for a "Propiedad"
+  so that "puedo asegurar la viabilidad de la transacción y la ausencia de problemas legales."
+}
+
+UserStory US3_RegisterPropertyHistory {
+  As an "Administrator"
+    I want to "registrar" "Historial" for a "Propiedad"
+  so that "los usuarios pueden tener una visión clara de la trayectoria de la propiedad en el mercado."
+}
+
+UserStory US4_UpdatePropertyAddress {
+  As a "Property Owner"
+    I want to "actualizar" "Dirección" for a "Propiedad"
+  so that "la información mostrada sea precisa y esté al día."
+}
+
+UserStory US5_ValidateContactInformation {
+  As a "Customer Support Team"
+    I want to "validar y actualizar" "Información de Contacto" for a "Propietarios"
+  so that "la comunicación con ellos sea efectiva y oportuna."
+}
+
+UserStory US6_VerifyBankDetails {
+  As a "Financial Consultant"
+    I want to "verificar" "Datos Bancarios" "Hipoteca" a "Propiedad"
+  so that "puedo asesorar correctamente a los clientes sobre sus opciones financieras."
+}
+
+UserStory US7_RegisterNewTransaction {
+  As a "Sales Agent"
+    I want to "registrar" "Nueva Transacción" for a "Propiedad"
+  so that "el registro refleje la actividad más reciente y mantenga la integridad de los datos."
+}
+
+UserStory US8_ManageMortgagedProperty {
+  As a "Mortgaged Property Manager"
+    I want to "gestionar" "Información" for a "Propiedades con Hipotecas"
+  so that "los clientes interesados puedan conocer el estado financiero del inmueble."
+}
+
+
