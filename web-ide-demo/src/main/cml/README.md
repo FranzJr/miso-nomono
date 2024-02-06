@@ -7,5 +7,11 @@
 | Carlos Javier Pita Amaya | [c.pita@uniandes.edu.co](mailto:c.pita@uniandes.edu.co)|
 | Franz Rogelez Carvajal | [f.rogelez@uniandes.edu.co](mailto:f.rogelez@uniandes.edu.co)|
 
-## Mapa de contexto
-La siguiente imagen ilustra el mapa de contexto propuesto
+## Mapa de contexto TO BE
+La siguiente imagen ilustra el mapa de contexto TO BE propuesto
+![image](https://github.com/FranzJr/miso-nomono/assets/3527273/670e33fa-3302-4b12-8821-cd05fbdba0d4)
+
+
+## Mapa de contexto AS IS
+La siguiente imagen ilustra el mapa de contexto AS IS
+![image](https://github.com/FranzJr/miso-nomono/assets/3527273/edc29629-2228-4030-b533-f3ad99ce79f3)
