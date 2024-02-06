@@ -1,0 +1,92 @@
+@startuml
+
+skinparam componentStyle uml2
+
+package "'GestionDeInformacionDeBienesRaices' Core Domain" <<Rectangle>> {
+	class Propiedad <<(E,DarkSeaGreen) Entity>> {
+		String identificador
+		Direccion direccion
+		String tipo
+		Int numeroDePisos
+		Float metrosCuadrados
+		Boolean esComercial
+		String zonificacion
+		Int capacidadDeEstacionamiento
+		Date fechaDeConstruccion
+		String estadoDeConservacion
+		Amenidades amenidades
+		Float valorComercialEstimado
+		Documentacion documentacion
+		Historial historial
+	}
+	class Propietario <<(E,DarkSeaGreen) Entity>> {
+		String identificador
+		String nombreCompleto
+		String tipoIdentificacion
+		String numeroIdentificacion
+		Contacto contacto
+		String rol
+	}
+	class Inmueble <<(E,DarkSeaGreen) Entity>> {
+		String identificador
+		Propiedad propiedad
+		Propietario propietarioActual
+		String registroInmobiliario
+		Boolean hipoteca
+		String estadoHipoteca
+		Float valorHipoteca
+		Banco bancoHipotecario
+	}
+	class Direccion <<(E,DarkSeaGreen) Entity>> {
+		String calle
+		String numero
+		String ciudad
+		String estado
+		String pais
+		String codigoPostal
+	}
+	class Contacto <<(E,DarkSeaGreen) Entity>> {
+		String telefono
+		String correo
+		String direccionPostal
+	}
+	class Amenidades <<(E,DarkSeaGreen) Entity>> {
+		Boolean piscina
+		Boolean gimnasio
+		Boolean seguridadPrivada
+		Boolean areaInfantil
+		Boolean salonComunal
+	}
+	class Documentacion <<(E,DarkSeaGreen) Entity>> {
+		String tituloDePropiedad
+		String certificadoDeTradicionYLibertad
+		Boolean impuestosAlDia
+		String usoDeSuelo
+	}
+	class Historial <<(E,DarkSeaGreen) Entity>> {
+		Date fechaDeCompra
+		Date fechaDeVenta
+		List<Transaccion> transaccionesAnteriores
+	}
+	class Banco <<(E,DarkSeaGreen) Entity>> {
+		String nombre
+		Contacto contacto
+	}
+	class Transaccion <<(E,DarkSeaGreen) Entity>> {
+		String identificador
+		Date fecha
+		String tipo
+		Float monto
+		String moneda
+		Propietario vendedor
+		Propietario comprador
+	}
+}
+legend left
+  This subdomain is part of the 'PropiedadesDeLosAlpes' domain.
+
+  Subdominio núcleo para la gestión de la información de bienes raíces, proporcionando una vista centralizada y detallada del mercado inmobiliario.
+end legend
+
+
+@enduml
