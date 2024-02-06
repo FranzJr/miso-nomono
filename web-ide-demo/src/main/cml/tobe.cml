@@ -1,33 +1,44 @@
 ContextMap PropiedadesDeLosAlpes_TOBE {
+  type = SYSTEM_LANDSCAPE
+  state = TO_BE
   contains GestionDeInformacion
   contains InvestigacionDeMercado
   contains GestionDeTransacciones
   contains AtencionAlCliente
   contains AnalisisDeDatos
 
-  GestionDeInformacion [PL]<->[D] InvestigacionDeMercado
-  GestionDeInformacion [PL]<->[D] GestionDeTransacciones
-  GestionDeTransacciones [PL]<->[D] AtencionAlCliente
-  GestionDeInformacion [C]<->[C] AnalisisDeDatos
+  // Corrigiendo las relaciones
+  GestionDeInformacion -> InvestigacionDeMercado
+  InvestigacionDeMercado -> GestionDeInformacion
+  
+  GestionDeInformacion -> GestionDeTransacciones
+  GestionDeTransacciones -> GestionDeInformacion
+  
+  GestionDeTransacciones -> AtencionAlCliente
+  AtencionAlCliente -> GestionDeTransacciones
+  
+  GestionDeInformacion -> AnalisisDeDatos
+  AnalisisDeDatos -> GestionDeInformacion
 }
 
+// Corrigiendo los tipos de BoundedContext
 BoundedContext GestionDeInformacion {
   type = APPLICATION
   domainVisionStatement = "Centralizar y optimizar la gestión de información de bienes raíces integrando análisis avanzados y datos en tiempo real."
 }
 
 BoundedContext InvestigacionDeMercado {
-  type = CORE
+  type = FEATURE // Ajustado de CORE a un tipo válido
   domainVisionStatement = "Potenciar la recopilación y análisis de datos de mercado para proveer insights valiosos y tendencias."
 }
 
 BoundedContext GestionDeTransacciones {
-  type = CORE
+  type = FEATURE // Ajustado de CORE a un tipo válido
   domainVisionStatement = "Innovar en la gestión de transacciones inmobiliarias con procesos más eficientes y seguros."
 }
 
 BoundedContext AtencionAlCliente {
-  type = SUPPORTING
+  type = FEATURE // Ajustado de SUPPORTING a un tipo válido
   domainVisionStatement = "Elevar la experiencia de servicio al cliente mediante tecnología y personalización."
 }
 

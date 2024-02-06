@@ -1,12 +1,19 @@
 ContextMap PropiedadesDeLosAlpes_ASIS {
+  type = SYSTEM_LANDSCAPE
+  state = TO_BE
   contains GestionDeInformacion
   contains InvestigacionYRecoleccion
   contains TransaccionesInmobiliarias
   contains ServicioAlCliente
 
-  GestionDeInformacion [PL]<->[U] InvestigacionYRecoleccion
-  GestionDeInformacion [PL]<->[U] TransaccionesInmobiliarias
-  TransaccionesInmobiliarias [PL]<->[U] ServicioAlCliente
+  GestionDeInformacion [PL]-> InvestigacionYRecoleccion
+  InvestigacionYRecoleccion [PL]-> GestionDeInformacion
+  
+  GestionDeInformacion [PL]-> TransaccionesInmobiliarias
+  TransaccionesInmobiliarias [PL]-> GestionDeInformacion
+  
+  TransaccionesInmobiliarias [PL]-> ServicioAlCliente
+  ServicioAlCliente [PL]-> TransaccionesInmobiliarias
 }
 
 BoundedContext GestionDeInformacion {
@@ -15,16 +22,16 @@ BoundedContext GestionDeInformacion {
 }
 
 BoundedContext InvestigacionYRecoleccion {
-  type = SUPPORTING
+  type = FEATURE
   domainVisionStatement = "Realizar la investigación y recolección de datos de propiedades para enriquecer la base de datos central."
 }
 
 BoundedContext TransaccionesInmobiliarias {
-  type = SUPPORTING
+  type = FEATURE
   domainVisionStatement = "Gestionar las transacciones de compra, venta y arrendamiento de propiedades."
 }
 
 BoundedContext ServicioAlCliente {
-  type = SUPPORTING
+  type = FEATURE
   domainVisionStatement = "Brindar asistencia y soporte a los clientes y usuarios de la plataforma."
 }
