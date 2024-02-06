@@ -1,6 +1,6 @@
-#Entrega 1 - Aplicaciones no Monoliticas
+# Entrega 1 - Aplicaciones no Monoliticas
 
-##Integrantes
+## Integrantes
 | Nombre           | Correo                        |
 |------------------|-------------------------------|
 | Wilber Palomino Acosta   | [w.palomino@uniandes.edu.co](mailto:w.palomino@uniandes.edu.co) |
